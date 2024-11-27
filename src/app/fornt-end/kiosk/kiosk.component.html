@@ -1,39 +1,48 @@
 
   <div class="container-fluid my-2 ">
-    <div class="row"> 
-        <div style="max-height: 100vh;background-color: #030303"  class="card-container  col-lg-3 border border-1 border-dark d-flex align-items-center  flex-lg-column pt-1">
-            <div *ngFor="let category of categories | async" class="col-8 p-2 m-3 bg-white shadow-sm rounded-4  border border-warning border-1 d-flex justify-content-around "> 
+    <div class="row">
+
+        <div style="max-height: 100vh;background: #8e8e8e" class="card-container  rounded-3 shadow-sm col-lg-3 border border-1 border-dark d-flex align-items-center  flex-lg-column pt-1">
+            <h6 class="sticky-top w-100 rounded-2 shadow-sm mt-2 display-6 text-center my-2 p-3 bg-white ">Catégories</h6>
+            <div *ngFor="let category of categories | async" class="col-8 p-2 m-3 bg-white shadow-sm rounded-3   d-flex justify-content-around ">
               <div class=" rounded-4 text-center  d-flex justify-content-around flex-lg-column" (click)="getProductsByCategory(category.ref)">
                 <div class="mx-3">
-                <img matChipAvatar [src]="category.icon" alt="" class="img-fluid " width="40px" />
+<!--                <img matChipAvatar [src]="category.icon" alt="" class="img-fluid " width="40px" />-->
+                    <img matChipAvatar src="/coffee_icon.png" alt="" class="img-fluid rounded-5 " width="60px" />
+                    <div class=" fw-bold mt-2 ">{{category.name}}</div>
                 </div>
-                <br>
-                <div class=" fw-bold ">{{category.name}}</div>
-            </div>
+              </div>
             </div>
 
           
         </div>
 
-      <div class="col-lg-9 p-lg-3 p-3 " style="overflow:auto ;max-height: 100vh;scrollbar-width: thin;scrollbar-color: rgba(255, 255, 255, 0.281);scrollbar-width: thin;scrollbar-color: transparent transparent;" >
+      <div class="col-lg-9 p-lg-3 p-3 " style="overflow:auto ;max-height: 100vh;background:#F8F9FA;scrollbar-width: thin;scrollbar-color: transparent transparent;" >
         <div class="row" >
             <div *ngFor="let product of allProduct | async" class="col-lg-3 col-6  p-lg-2 " >
-              <mat-card  class="p-3 card bg-white" >
+              <mat-card  class="p-3 card bg-white shadow" >
                 <span class="badge  bg-dark col-6">{{product.seller.sellerName}}</span>
-                <a href="/product#top">
-                  <img (click)="showProductDialog(product.ref)" class="card-img-top" src="https://modpizza.com/wp-content/uploads/2021/12/Website-Pizzas-MadDog-TEST.png" alt="Photo of a Shiba Inu">
+                <a href="/product#top" class="p-2 text-center">
+                  <img (click)="showProductDialog(product.ref)" class="card-img-top w-75 img-fluid" src="/foodIcon.png" alt="Photo of a Shiba Inu" >
                 </a>
-                <h6 class="h5 mt-2 fw-blod"><strong>{{product.name}}</strong>
-                </h6>
-                <mat-card-actions class="d-flex justify-content-around">
-                  
-                
-                  <button mat-button disabled="true">{{product.price}} MAD</button>
-                  <button extended mat-raised-button aria-label="Add to cart" class="rounded-1 text-center" style="color:#595959;transform:scale(1.2)" 
-                   (click)="addToBasket(product)">
-                    <mat-icon class="m-auto">shopping_cart</mat-icon>
+                <p class="h6 mt-3 fw-blod text-center"><strong>{{product.name}}</strong> </p><div class="d-flex flex-column align-items-center">
+                  <!-- Display the product price -->
+                  <button mat-button disabled class="price-button">
+                      {{ product.price }} MAD
                   </button>
-                </mat-card-actions>
+
+                  <!-- Add to cart button -->
+                  <button
+                          mat-raised-button
+                          color="primary"
+                          class="add-to-cart-btn mt-2 text-dark"
+                          aria-label="Add to cart"
+                          (click)="addToBasket(product)">
+                      <mat-icon class="mr-2">shopping_cart</mat-icon>
+                      Add to Cart
+                  </button>
+              </div>
+
               </mat-card>
               </div>
         </div>

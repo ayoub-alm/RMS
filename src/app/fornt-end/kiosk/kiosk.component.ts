@@ -10,12 +10,13 @@ import { CommonModule } from '@angular/common';
 import { OrderModel } from '../../models/order.model';
 import { OrderService } from '../../services/OrderService';
 import { MatButtonModule } from '@angular/material/button';
+import {MatChipAvatar} from "@angular/material/chips";
 
 
 @Component({
   selector: 'app-kiosk',
   standalone:true,
-  imports:[MatIconModule,MatCard,MatCardActions,CommonModule,MatCardModule, MatButtonModule],
+    imports: [MatIconModule, MatCard, MatCardActions, CommonModule, MatCardModule, MatButtonModule, MatChipAvatar],
   providers:[OrderService,ProductCategoryService,ProductsServices],
   templateUrl: './kiosk.component.html',
   styleUrls: ['./kiosk.component.css']
