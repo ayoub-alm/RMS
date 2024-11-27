@@ -3,6 +3,9 @@
   <mat-drawer #drawer class="example-sidenav custom-drawer-width bg-secondary-subtle" mode="side" opened>
     <div class="container-fluid side-nav">
       <!-- Logo -->
+        <button mat-icon-button (click)="drawer.toggle()" class="example-icon text-white" aria-label="Toggle sidenav">
+            <mat-icon>menu</mat-icon>
+        </button>
       <p class="text-center mt-3 text-dark">
         Smart Menu Maroc
       </p>
@@ -69,7 +72,7 @@
   <!-- Main Content Area -->
   <div class="example-sidenav-content">
     <!-- Top Toolbar -->
-    <mat-toolbar class="sticky-top bg-dark">
+    <mat-toolbar class="sticky-top " style="background: #8e8e8e">
       <button mat-icon-button (click)="drawer.toggle()" class="example-icon text-white" aria-label="Toggle sidenav">
         <mat-icon>menu</mat-icon>
       </button>

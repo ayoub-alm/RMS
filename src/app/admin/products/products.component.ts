@@ -33,7 +33,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     // Fetch products from the service and initialize the data source
-    this.productsService.getProductsBySellerId(2).pipe(
+    this.productsService.getProducts().pipe(
       tap(products => {
         this.dataSource.data = products;
       })
