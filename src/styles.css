@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.glass-orang{
+    backdrop-filter: blur(5px);
+    background-color: #fcd965;
+    box-shadow: 35px 35px 68px 0px rgba(245, 166, 35, 0.3);
+  }
+  .glass-orang-color{
+    color: #fcd965;
+  }
+  
+  .second-color-border{
+    border: 2px solid #fcd965;
+  }
+  
+  /*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
+  .glass{
+    background: rgba(255,255,255,0.5);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  
+
+  .custom-dialog-container {
+    width: 100vh !important;
+    padding: 10px;
+    /* max-width: 90vw;  */
+  }
+
+
+
+   .dark-bg{
+    background-color: #030303;
+   }
+
+
+
+   

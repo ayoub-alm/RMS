@@ -1,0 +1,71 @@
+ 
+ <div class="container my-5 bg-light p-4 rounded-3 ">
+  <div class="swiper ">
+    <div class="swiper-wrapper p-2">
+      <div class="swiper-slide" *ngFor="let product of selectedProducts | async">
+      <mat-card  class="p-3 card bg-white" >
+      <span class="badge  bg-dark col-6">{{product.seller.sellerName}}</span>
+      <a href="/product#top">
+        <img  class="card-img-top" src="https://modpizza.com/wp-content/uploads/2021/12/Website-Pizzas-MadDog-TEST.png" alt="Photo of a Shiba Inu">
+      </a>
+      <p class="mt-2 overflow-x-hidden">{{product.name}}</p>
+      <mat-card-actions class="d-flex justify-content-around p-0 m-0">              
+        <button mat-button disabled="true">{{product.price}} MAD</button>
+        <button extended mat-button aria-label="Add to cart" class="rounded-1 text-center" style="color:#595959;" 
+         >
+          <mat-icon class="m-auto">shopping_cart</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <!-- <div class="swiper-scrollbar"></div> -->
+  </div>
+ </div>
+ <footer class="container-fluid text-center p-5 card-body  dark-bg shadow-lg " style="border-radius: 25px 25px 0px 0px ;">
+  <div class="row">
+    <div class="col-lg-3 col-sm-12">
+      <img src="../../../assets/mamito_logo-png.png" width="200px" class="img-fluid" alt="">
+      <br>
+      <small class="d-block  text-white">© 2023–2024</small>
+
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <h5  class="text-start " style="color: #d7a734;">Smart menu </h5>
+      <ul class="list-unstyled text-small text-start">
+        <li><a class="link-secondary text-white text-strat" href="#">Cool stuff</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Random feature</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Team feature</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Stuff for developers</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Another one</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <h5 class="text-start " style="color: #d7a734;">Resources</h5>
+      <ul class="list-unstyled text-small text-start">
+        <li><a class="link-secondary text-white text-strat" href="#">Resource name</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Resource</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Another resource</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Final resource</a></li>
+      </ul>
+    </div>
+    <div class="col-lg-3 col-sm-6   ">
+      <h5 class="text-start " style="color: #d7a734;">About</h5>
+      <ul class="list-unstyled text-small text-start">
+        <li><a class="link-secondary text-white text-strat" href="#">Team</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Locations</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Privacy</a></li>
+        <li><a class="link-secondary text-white text-strat" href="#">Terms</a></li>
+      </ul>
+    </div>
+    <div class="col-12 text-center">
+      <small class="d-block mb-3 text-white">
+        Created by :
+        <a href="https://www.linkedin.com/in/ayoub-lemrachchaq-b25014143"> Ayoub Lemrachchaq</a>
+      </small>
+    </div>
+  </div>
+</footer>

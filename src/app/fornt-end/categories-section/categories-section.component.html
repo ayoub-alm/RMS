@@ -1,0 +1,116 @@
+
+
+
+
+<div class="container-fluid" id="categories">
+  <div class="row my-3">
+    <hr>
+    <h2 class="text-center display-4 my-2" data-aos="fade-up">Catégories</h2>
+  </div>
+</div>
+<div class="container mt-3" >
+  <div class="row">
+    <!-- <div class="col-12"> -->
+      <div class="d-flex justify-content-around row "  style="overflow-x: auto; white-space: nowrap;overflow-y: visible;">
+       <div class="card-container">
+        <div style="background-color: #e9b84e;"
+         class="col-4 col-lg-2  mx-2 p-1  shadow-sm rounded-4 border border-dark border-1 d-flex justify-content-around"> 
+          <li class=" rounded-4  d-flex justify-content-around" >
+            <div class="mx-1">
+           <mat-icon><span class="material-symbols-outlined">
+            local_fire_department
+            </span></mat-icon>
+            </div>
+            <div class=" fw-bold">Tous</div>
+           </li>
+        </div>
+        <div *ngFor="let category of productCategories | async"
+        (click)="getProductsByCategory(category.ref)"
+         class="col-4 col-lg-2  mx-2 p-1  shadow-sm rounded-4 border border-dark border-1 d-flex justify-content-around"> 
+          <li mat-card class=" rounded-4  d-flex justify-content-around" >
+            <div class="mx-1">
+            <img matChipAvatar [src]="category.icon" alt="" class="img-fluid " width="25px" />
+            </div>
+            <div class=" fw-bold">{{category.name}}</div>
+           </li>
+        </div>
+       </div>
+      <!-- </div> -->
+    </div>
+
+    <div class="col-lg-12" >
+      <div class="row" style="overflow-x: auto; white-space: nowrap;overflow-y: visible;">
+        <div class="card-container" >
+          <div *ngFor="let product of selectedProducts | async" class="col-lg-2 p-2" >
+            <mat-card  class="p-3 card glass" >
+              <span class="badge  bg-dark col-6">{{product.seller.sellerName}}</span>
+              <a href="/product#top">
+                <img  class="card-img-top" src="https://modpizza.com/wp-content/uploads/2021/12/Website-Pizzas-MadDog-TEST.png" alt="Photo of a Shiba Inu">
+              </a>
+              <p class="mt-2 overflow-x-hidden">{{product.name}}</p>
+              <mat-card-actions class="d-flex justify-content-around p-0 m-0">              
+                <button mat-button disabled="true">{{product.price}} MAD</button>
+                <button extended mat-button aria-label="Add to cart" class="rounded-1 text-center" style="color:#595959;" 
+                 (click)="addToBasket(product)">
+                  <mat-icon class="m-auto">shopping_cart</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add init="false" -->
+
+
+
+
+
+
+<div class="container-fluid mt-3"   style="background-image: url('/texture.webp');background-attachment: fixed;border-radius: 20px 20px 0px 0px;"  id="top-selles">
+  <div class="row ">
+    <hr>
+    <h2 class="text-center display-4 my-2" data-aos="fade-up">Meilleures ventes</h2>
+  </div>
+  <div class="row">
+     <div class="col-lg-12  " >
+      <div class="row p-3" style="overflow-x: auto; white-space: nowrap;overflow-y: visible;">
+        <div class="card-container">
+          <div *ngFor="let product of allProducts | async" class="col-lg-2 p-2">
+            <div  class="p-3 glass card shadow-sm border border-warning border-2" >
+              <span class="badge  bg-dark col-6">{{product.seller.sellerName}}</span>
+              <a href="/product">
+                <img class="card-img-top" src="https://modpizza.com/wp-content/uploads/2021/12/Website-Pizzas-MadDog-TEST.png" alt="Photo of a Shiba Inu">
+              </a>
+              <h6 class="card-title mt-2">{{product.name}}</h6>
+              <mat-card-actions class="d-flex justify-content-around">
+                
+              
+                <button mat-button disabled="true">{{product.price}} MAD</button>
+                <button extended mat-raised-button aria-label="Add to cart" class="rounded-3 text-center" style="color:#595959;transform:scale(1)" 
+                 (click)="addToBasket(product)">
+                  <mat-icon class="m-auto">shopping_cart</mat-icon>
+                </button>
+              </mat-card-actions>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-lg-3">
+      <ul class="list-group" *ngFor="let category of productCategories | async">
+        <li class="list-group-item rounded-4 m-1 d-flex justify-content-start" (click)="getProductsByCategory(category.ref)">
+         <img matChipAvatar [src]="category.icon" alt="" class="img-fluid mx-3" width="25px" />
+          <div class="ml-3">{{category.name}}</div>
+        </li>
+      </ul>
+    </div> -->
+
+    
+  </div>
+</div>
+
+
+<app-basket></app-basket>

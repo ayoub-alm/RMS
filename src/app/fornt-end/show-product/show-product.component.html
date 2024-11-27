@@ -1,0 +1,62 @@
+
+<div class="container" id="top">
+  <br><br><br><br>
+  <div class="row p-lg-3">
+      <mat-card  class="col-lg-6 d-flex justify-content-center border border-dark   border-1
+        rounded-3 text-center ">
+        <mat-card-content>
+          <img src="https://modpizza.com/wp-content/uploads/2021/12/Website-CYO.png" alt="" class="img-fluid">
+        </mat-card-content>
+      </mat-card>
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col-lg-12 p-lg-5">
+          <p class="display-4 text-dark" >Product name</p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore iusto placeat cumque veritatis laboriosam, incidunt ducimus libero laudantium omnis fugiat molestiae dolore? Quasi fugit rerum enim culpa? Ducimus, quia neque!
+          </p>
+
+          <form formGroupName="orderForumGroup" class="">
+            <div class="row">
+              <div class="col-6 input-group">
+                <div class="input-group-prepend">
+                  <button mat-raised-button  (click)="increaseQuantity()" class="btn btn-warning" type="button">+</button>
+                </div>
+                <input type="number" class="form-control border-1 rounded" formControlName="quantity">
+                <div class="input-group-append">
+                  <button mat-raised-button  (click)="decreaseQuantity()" class="btn btn-warning" type="button">-</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <mat-accordion class="p-2">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false" class="p-2">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Afficher les ingrédients
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+<!--              <p>Ingredients: </p>-->
+                <section class="example-section">
+                  <mat-checkbox checked="true" class="example-margin">Fromage</mat-checkbox>
+                  <mat-checkbox  checked="true"  class="example-margin">souse</mat-checkbox>
+                  <mat-checkbox  checked="true"  class="example-margin">gredient 3</mat-checkbox>
+                </section>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <div class=" mt-3"  aria-label="Button group m-5">
+            <a (click)="onAddToBasket(1)" class="m-3">
+              <button mat-raised-button class="btn btn-warning" type="button"  color="accent">Add to Basket</button>
+            </a>
+            <a (click)="onAddToBasket(1)">
+              <button routerLink="/" mat-raised-button class="btn btn-warning" type="button" color="primary">Home</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+
