@@ -1,5 +1,5 @@
 <div class="offcanvas vh-100  offcanvas-end rounded overflow-x-hidden" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header border bg-dark rounded-0  rounded">
+  <div class="offcanvas-header border bg-dark-smart rounded-0  rounded">
     <p class="offcanvas-title text-white fw-bold" id="offcanvasExampleLabel"><strong>Total</strong>: {{ totalAmount  }} MAD</p>
     
     <button style="color: white !important;" type="button" class="bg-white btn-close btn btn-secondary" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -11,17 +11,17 @@
         <div class="card mb-2">
           <div class="row g-0">
             <div class="col-4 p-2">
-              <img src="https://modpizza.com/wp-content/uploads/2021/12/Website-Pizzas-MadDog-TEST.png" class="img-fluid rounded-start" alt="...">
+              <img src="/foodIcon.png" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-6">
               <div class="card-body">
                 <div class="d-flex p-2 justify-content-between w-100">
-                  <p class="card-title bolder fw-bold">{{ product.product.name }}</p>
+                  <p class="card-title bolder ">{{ product.product.name }}</p>
                 </div>
-                <p class="card-title bolder d-flex">
-                  Quantité: <strong class="text-dark mx-1">{{ product.quantity }}</strong>
-                </p>
-                <p class="card-title bolder">Prix: {{ product.product.price  }}</p>
+                <small class="card-title bolder d-flex">
+                  Quantité: <strong class="text-dark  mx-1">{{ product.quantity }}</strong>
+                </small>
+                <small class="card-title bolder">Prix: {{ product.product.price  }}</small>
               </div>
             </div>
             <div class="col-2 d-flex flex-column overflow-x-hidden justify-content-between p-2">
@@ -44,7 +44,7 @@
     
         <li class="list-group-item d-flex justify-content-around">
           <!-- Normal Order Button -->
-          <button mat-button class="bg-dark mx-2 text-white">Commander</button>
+          <button mat-button class="bg-dark-smart mx-2 text-white">Commander</button>
           
           <!-- WhatsApp Order Button -->
           <button mat-button class="bg-success text-white" (click)="generateWhatsAppMessage()">

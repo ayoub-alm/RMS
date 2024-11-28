@@ -1,52 +1,85 @@
+<section class="container-fluid" style="  background: #8e8e8e;">
+    <mat-toolbar class="" style="background: #8e8e8e">
+        <button aria-label="Example icon-button with menu icon" class="example-icon text-white" mat-icon-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span class="text-white">Smart Menu</span>
+        <span class="example-spacer"></span>
+        <button aria-label="Example icon-button with heart icon" class="example-icon text-white favorite-icon"
+                mat-icon-button>
+            <mat-icon>logout</mat-icon>
+        </button>
+        <button aria-label="Example icon-button with share icon" class="example-icon text-white " mat-icon-button>
+            <mat-icon class="profile-icon">account_circle</mat-icon>
+        </button>
+<!--        <button aria-label="Example icon-button with share icon" class="example-icon text-white " mat-icon-button>-->
+<!--            <mat-icon>shopping_cart</mat-icon>-->
+<!--        </button>-->
+        <button mat-button type="button" class="btn bg-light fs-6 mx-3 text-dark" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" >
+            <mat-icon >shopping_cart</mat-icon>
+<!--            <small class="position-absolute bottom-1 start-75 translate-middle  bg-dark badge rounded-pill" >-->
+             <span *ngIf="productsInBasketCount.getValue() > 0"> {{productsInBasketCount.getValue()}} Element in card</span>
+<!--            </small>-->
+        </button>
+    </mat-toolbar>
+    <div class="container-fluid">
+        <div class="row">
 
-  <div class="container-fluid my-2 ">
-    <div class="row">
-
-        <div style="max-height: 100vh;background: #8e8e8e" class="card-container  rounded-3 shadow-sm col-lg-3 border border-1 border-dark d-flex align-items-center  flex-lg-column pt-1">
-            <h6 class="sticky-top w-100 rounded-2 shadow-sm mt-2 display-6 text-center my-2 p-3 bg-white ">Catégories</h6>
-            <div *ngFor="let category of categories | async" class="col-8 p-2 m-3 bg-white shadow-sm rounded-3   d-flex justify-content-around ">
-              <div class=" rounded-4 text-center  d-flex justify-content-around flex-lg-column" (click)="getProductsByCategory(category.ref)">
-                <div class="mx-3">
-<!--                <img matChipAvatar [src]="category.icon" alt="" class="img-fluid " width="40px" />-->
-                    <img matChipAvatar src="/coffee_icon.png" alt="" class="img-fluid rounded-5 " width="60px" />
-                    <div class=" fw-bold mt-2 ">{{category.name}}</div>
+            <div class="card-container col-lg-3  d-flex align-items-center  flex-lg-column"
+                 style="max-height: 100vh;background: #8e8e8e">
+                <h6 class="sticky-top w-100 rounded-2  fs-4 mat-elevation-z6 text-center my-2 p-3 bg-white ">
+                    Catégories
+                </h6>
+                <div *ngFor="let category of categories | async"
+                     class="col-8 p-2 m-3 bg-white shadow-sm rounded-3   d-flex justify-content-around ">
+                    <div (click)="getProductsByCategory(category.ref)"
+                         class=" rounded-4 text-center  d-flex justify-content-around flex-lg-column">
+                        <div class="mx-3">
+                            <!--                <img matChipAvatar [src]="category.icon" alt="" class="img-fluid " width="40px" />-->
+                            <img alt="" class="img-fluid rounded-5 " matChipAvatar src="/coffee_icon.png" width="60px"/>
+                            <div class=" fw-bold mt-2 ">{{ category.name }}</div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
 
-          
+            <div class="col-lg-9 p-lg-3 rounded-4 mat-elevation-z50"
+                 style="overflow:auto ;max-height: 100vh;background:#F8F9FA;scrollbar-width: thin;scrollbar-color: transparent transparent;">
+                <div class="row">
+                    <div *ngFor="let product of allProduct | async" class="col-lg-3 col-6  p-lg-2 ">
+                        <mat-card class="p-3 card bg-white shadow-sm ">
+                            <span class="badge  bg-dark col-6">{{ product.seller.sellerName }}</span>
+                            <a class="p-2 text-center" href="/product#top">
+                                <img (click)="showProductDialog(product.ref)" alt="Photo of a Shiba Inu"
+                                     class="card-img-top w-75 img-fluid" src="/foodIcon.png">
+                            </a>
+                            <p class="h6 mt-3 fw-blod text-center"><strong>{{ product.name }}</strong></p>
+                            <div class="d-flex flex-column align-items-center">
+                                <!-- Display the product price -->
+                                <button class="price-button" disabled mat-button>
+                                    {{ product.price }} MAD
+                                </button>
+
+                                <!-- Add to cart button -->
+                                <button
+                                        (click)="addToBasket(product)"
+                                        aria-label="Add to cart"
+                                        class="add-to-cart-btn mt-2 text-dark"
+                                        color="primary"
+                                        mat-raised-button>
+                                    <mat-icon class="mr-2">shopping_cart</mat-icon>
+                                    Add to Cart
+                                </button>
+                            </div>
+
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+
         </div>
-
-      <div class="col-lg-9 p-lg-3 p-3 " style="overflow:auto ;max-height: 100vh;background:#F8F9FA;scrollbar-width: thin;scrollbar-color: transparent transparent;" >
-        <div class="row" >
-            <div *ngFor="let product of allProduct | async" class="col-lg-3 col-6  p-lg-2 " >
-              <mat-card  class="p-3 card bg-white shadow" >
-                <span class="badge  bg-dark col-6">{{product.seller.sellerName}}</span>
-                <a href="/product#top" class="p-2 text-center">
-                  <img (click)="showProductDialog(product.ref)" class="card-img-top w-75 img-fluid" src="/foodIcon.png" alt="Photo of a Shiba Inu" >
-                </a>
-                <p class="h6 mt-3 fw-blod text-center"><strong>{{product.name}}</strong> </p><div class="d-flex flex-column align-items-center">
-                  <!-- Display the product price -->
-                  <button mat-button disabled class="price-button">
-                      {{ product.price }} MAD
-                  </button>
-
-                  <!-- Add to cart button -->
-                  <button
-                          mat-raised-button
-                          color="primary"
-                          class="add-to-cart-btn mt-2 text-dark"
-                          aria-label="Add to cart"
-                          (click)="addToBasket(product)">
-                      <mat-icon class="mr-2">shopping_cart</mat-icon>
-                      Add to Cart
-                  </button>
-              </div>
-
-              </mat-card>
-              </div>
-        </div>
-      </div> 
-
     </div>
-  </div>
+</section>
+
+
+<app-basket></app-basket>

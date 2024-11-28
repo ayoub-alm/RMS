@@ -11,20 +11,21 @@ import { OrderModel } from '../../models/order.model';
 import { OrderService } from '../../services/OrderService';
 import { MatButtonModule } from '@angular/material/button';
 import {MatChipAvatar} from "@angular/material/chips";
+import {MatToolbar} from "@angular/material/toolbar";
+import {BasketComponent} from "../basket/basket.component";
+import {ProductInOrderDto} from "../../Dtos/product-in-order.dto";
 
 
 @Component({
   selector: 'app-kiosk',
   standalone:true,
-    imports: [MatIconModule, MatCard, MatCardActions, CommonModule, MatCardModule, MatButtonModule, MatChipAvatar],
+  imports: [MatIconModule, MatCard, MatCardActions, CommonModule, MatCardModule, MatButtonModule, MatChipAvatar, MatToolbar, BasketComponent],
   providers:[OrderService,ProductCategoryService,ProductsServices],
   templateUrl: './kiosk.component.html',
   styleUrls: ['./kiosk.component.css']
 })
 export class KioskComponent implements OnInit, OnDestroy {
-addToBasket(_t20: ProductModel) {
-throw new Error('Method not implemented.');
-}
+
 showProductDialog(arg0: string) {
 throw new Error('Method not implemented.');
 }
@@ -32,9 +33,12 @@ throw new Error('Method not implemented.');
 subscriptions: Subscription[] = [];
 categories: BehaviorSubject<ProductCategory[]> = new BehaviorSubject<ProductCategory[]>([])
 allProduct: BehaviorSubject<ProductModel[]> = new BehaviorSubject<ProductModel[]>([])
-constructor(private categoryService: ProductCategoryService, private productService: ProductsServices ){}
-ngOnInit(): void {
+productsInBasketCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
+constructor(private categoryService: ProductCategoryService, private productService: ProductsServices, private orderService: OrderService ){}
+
+
+ngOnInit(): void {
   this.subscriptions.push(
     this.categoryService.getProductsCategories().subscribe(productCategories => {
     this.categories.next(productCategories);
@@ -45,7 +49,25 @@ ngOnInit(): void {
     this.productService.getProducts().pipe().subscribe(
       products => this.allProduct.next(products)
     ));
-  
+
+  this.orderService.order$.subscribe((data)=>{
+    this.productsInBasketCount.next(data.products.length)
+  })
+}
+
+addToBasket(product: ProductModel): void {
+  // Create a ProductInOrderDto from ProductModel
+  const productInOrder: ProductInOrderDto = {
+    product: product,
+    quantity: 1 // default quantity can be set here, or you can make it dynamic
+  };
+
+  // Add the product to the order
+  this.orderService.addProductToOrder(productInOrder);
+  // Log the updated order by subscribing to the observable
+  this.orderService.order$.subscribe(order => {
+    console.log('Updated order:', order);
+  });
 }
 
 getProductsByCategory(arg0: string) {

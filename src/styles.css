@@ -1,40 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family:"Poppins", Roboto, "Helvetica Neue", sans-serif; }
 
+* {
+    font-family: "Poppins", Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+mat-icon {
+    font-family: "Material Icons", sans-serif !important;
+}
 
 .glass-orang{
-    backdrop-filter: blur(5px);
-    background-color: #fcd965;
-    box-shadow: 35px 35px 68px 0px rgba(245, 166, 35, 0.3);
-  }
-  .glass-orang-color{
-    color: #fcd965;
-  }
+backdrop-filter: blur(5px);
+background-color: #fcd965;
+box-shadow: 35px 35px 68px 0px rgba(245, 166, 35, 0.3);
+}
+.glass-orang-color{
+color: #fcd965;
+}
   
-  .second-color-border{
-    border: 2px solid #fcd965;
-  }
-  
+.second-color-border{
+border: 2px solid #fcd965;
+}
+
   /*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
-  .glass{
-    background: rgba(255,255,255,0.5);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255,255,255,0.25);
-  }
-  
-
-  .custom-dialog-container {
-    width: 100vh !important;
-    padding: 10px;
-    /* max-width: 90vw;  */
-  }
+.glass{
+background: rgba(255,255,255,0.5);
+-webkit-backdrop-filter: blur(5px);
+backdrop-filter: blur(5px);
+border: 1px solid rgba(255,255,255,0.25);
+}
 
 
-
-   .dark-bg{
-    background-color: #030303;
-   }
+.custom-dialog-container {
+width: 100vh !important;
+padding: 10px;
+/* max-width: 90vw;  */
+}
 
 
 
-   
+.dark-bg{
+background-color: #030303;
+}
+
+
+
+* {
+    transition: opacity 2s ease-in-out;
+    animation: blink 1s;
+    font-family: "Poppins",sans-serif !important;
+}
+@keyframes blink {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+/* Custom scrollbar styling for horizontal scrollbar */
+*::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color:  #8e8e8e; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Round corners of the scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+    background: #F8F9FA; /* Background of the scrollbar track */
+}
+
+
+
+.bg-dark-smart{
+    background-color:  #8e8e8e!important;
+}
+
+.bg-dark-light-smart{
+    background: #F8F9FA!important;
+}
