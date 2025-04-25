@@ -1,32 +1,27 @@
 
-
-
-
 <div class="container-fluid" id="categories">
   <div class="row my-3">
     <hr>
     <h2 class="text-center display-4 my-2" data-aos="fade-up">Catégories</h2>
   </div>
 </div>
-<div class="container mt-3" >
+<div class="container-fluid px-lg-5 mt-3" >
   <div class="row">
     <!-- <div class="col-12"> -->
       <div class="d-flex justify-content-around row "  style="overflow-x: auto; white-space: nowrap;overflow-y: visible;">
        <div class="card-container">
-        <div style="background-color: #e9b84e;"
-         class="col-4 col-lg-2  mx-2 p-1  shadow-sm rounded-4 border border-dark border-1 d-flex justify-content-around"> 
-          <li class=" rounded-4  d-flex justify-content-around" >
-            <div class="mx-1">
-           <mat-icon><span class="material-symbols-outlined">
-            local_fire_department
-            </span></mat-icon>
+        <div style="background-color: #e9b84e;"  (click)="getAllProducts()"
+         class=" mx-2 mat-elevation-z3 rounded-2 border border-secondary align-items-center border-1 d-flex justify-content-around px-3 py-1 ">
+          <li class=" rounded-4  d-flex justify-content-around align-items-center" >
+            <div class="mx-1"  >
+           <mat-icon>local_fire_department</mat-icon>
             </div>
             <div class=" fw-bold">Tous</div>
            </li>
         </div>
         <div *ngFor="let category of productCategories | async"
         (click)="getProductsByCategory(category.ref)"
-         class="col-4 col-lg-2  mx-2 p-1  shadow-sm rounded-4 border border-dark border-1 d-flex justify-content-around"> 
+         class=" mx-2 mat-elevation-z3 rounded-2 border border-secondary align-items-center border-1 d-flex justify-content-around px-3 py-1 ">
           <li mat-card class=" rounded-4  d-flex justify-content-around" >
             <div class="mx-1">
             <img matChipAvatar [src]="category.icon" alt="" class="img-fluid " width="25px" />
@@ -40,17 +35,18 @@
 
     <div class="col-lg-12" >
       <div class="row" style="overflow-x: auto; white-space: nowrap;overflow-y: visible;">
-        <div class="card-container" >
+        <div class="card-container" data-aos="zoom-in-up" >
           <div *ngFor="let product of selectedProducts | async" class="col-lg-2 p-2" >
-            <mat-card  class="p-3 card glass" >
+            <mat-card  class="p-3 card glass rounded-1 px-3" >
               <span class="badge  bg-dark col-6">{{product.seller.sellerName}}</span>
-              <a href="/product#top">
-                <img  class="card-img-top" src="https://modpizza.com/wp-content/uploads/2021/12/Website-Pizzas-MadDog-TEST.png" alt="Photo of a Shiba Inu">
+              <a routerLink="/product/show">
+                <img  class="card-img-top" src="https://modpizza.com/wp-content/uploads/2021/12/Website-Pizzas-MadDog-TEST.png" alt="">
+<!--                <img  class="card-img-top" [src]="product.img" alt="">-->
               </a>
               <p class="mt-2 overflow-x-hidden">{{product.name}}</p>
               <mat-card-actions class="d-flex justify-content-around p-0 m-0">              
                 <button mat-button disabled="true">{{product.price}} MAD</button>
-                <button extended mat-button aria-label="Add to cart" class="rounded-1 text-center" style="color:#595959;" 
+                <button extended mat-button aria-label="Add to cart" class="rounded-3 text-center" style="color:#595959;"
                  (click)="addToBasket(product)">
                   <mat-icon class="m-auto">shopping_cart</mat-icon>
                 </button>
@@ -77,7 +73,7 @@
   <div class="row">
      <div class="col-lg-12  " >
       <div class="row p-3" style="overflow-x: auto; white-space: nowrap;overflow-y: visible;">
-        <div class="card-container">
+        <div class="card-container" data-aos="slide-right">
           <div *ngFor="let product of allProducts | async" class="col-lg-2 p-2">
             <div  class="p-3 glass card shadow-sm border border-warning border-2" >
               <span class="badge  bg-dark col-6">{{product.seller.sellerName}}</span>
@@ -112,5 +108,3 @@
   </div>
 </div>
 
-
-<app-basket></app-basket>

@@ -15,12 +15,14 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 
 import { BasketComponent } from '../basket/basket.component';
+import {MatChipAvatar} from "@angular/material/chips";
+import {RouterLink} from "@angular/router";
 
 
 @Component({
   selector: 'app-categories-section',
   standalone:true,
-  imports:[MatIconModule,MatCardModule,CommonModule,NavBarComponent,MatCard, MatButtonModule, BasketComponent],
+    imports: [MatIconModule, MatCardModule, CommonModule, NavBarComponent, MatCard, MatButtonModule, BasketComponent, MatChipAvatar, RouterLink],
   providers:[OrderService],
   templateUrl: './categories-section.component.html',
   styleUrls: ['./categories-section.component.css'],
@@ -106,4 +108,7 @@ export class CategoriesSectionComponent implements OnInit , OnDestroy{
     });
   }
 
+    getAllProducts(): void {
+       this.selectedProducts.next(this.allProducts.getValue())
+    }
 }

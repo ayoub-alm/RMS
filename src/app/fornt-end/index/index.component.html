@@ -1,0 +1,37 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer #drawer mode="side" position="end" class="vh-100 w-sm-100 w-md-25 w-lg-25  position-fixed rounded-1 bg-secondary-subtle menu-drawer">
+        <app-basket  (closeDrawer)="drawer.close()"></app-basket>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <mat-toolbar class="mat-elevation-z0 border border-1" color="transparent">
+            <div class="container-fluid d-flex align-items-center justify-content-between w-100">
+
+                <!-- Left side: Logo + Nav links -->
+                <div class="d-flex align-items-center gap-4">
+                    <div class="d-flex">
+                        <button mat-icon-button class="mx-0 rounded-1"><mat-icon>menu</mat-icon></button>
+                        <a class="navbar-brand d-flex align-items-center" (click)="router.navigateByUrl('/')" style="color: #d7a734;">
+                            <span class="fw-bold">Le repère</span>
+                        </a>
+                    </div>
+                    <a href="#" class="d-none d-md-block nav-link text-dark">Categories</a>
+                    <!-- Visible on lg and up only -->
+                    <a href="#" class="d-none d-lg-block nav-link text-dark">Top sell's</a>
+                </div>
+
+                <!-- Right side: Basket + Login -->
+                <div class="d-flex align-items-center gap-3">
+                    <button mat-icon-button aria-label="Basket" class="position-relative rounded-1" (click)="drawer.toggle()">
+                        <mat-icon>shopping_cart</mat-icon>
+                        <span class="position-absolute top-10 start-100 translate-middle badge rounded-pill" style="background-color: #e9b84e;transform: scale(0.9); font-size: 0.9rem;">
+                          {{ productsInBasketCount.getValue() }}
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

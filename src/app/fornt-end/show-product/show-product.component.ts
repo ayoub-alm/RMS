@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, FormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogActions } from '@angular/material/dialog';
+import {MatButton} from "@angular/material/button";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-show-product',
   standalone:true,
-  imports:[MatCheckbox,MatCheckboxModule,MatCard,MatCardModule,FormsModule,CommonModule,MatExpansionModule,MatDialogActions],
+  imports: [MatCheckbox, MatCheckboxModule, MatCardModule, FormsModule, CommonModule, MatExpansionModule, ReactiveFormsModule,
+     FormsModule,MatButton, RouterLink],
   templateUrl: './show-product.component.html',
   styleUrls: ['./show-product.component.css']
 })

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
 import { OrderService } from '../../services/OrderService';
 import { ProductInOrderDto } from '../../Dtos/product-in-order.dto';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { ProductModel } from '../../models/product.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-basket',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIcon],
+  imports: [CommonModule, MatButtonModule, MatIcon, MatToolbar, MatToolbar, MatToolbarModule],
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css'],
 
@@ -20,6 +21,7 @@ export class BasketComponent implements OnInit, OnDestroy {
   public products: BehaviorSubject<ProductInOrderDto[]> = new BehaviorSubject<ProductInOrderDto[]>([]); // Local products array
   public totalAmount: string = '0'; // Local total amount
   private orderSubscription!: Subscription;
+  @Output() closeDrawer = new EventEmitter<any>();
 
   constructor(private orderService: OrderService) {}
 
@@ -45,7 +47,7 @@ export class BasketComponent implements OnInit, OnDestroy {
     const currentOrder = this.orderService.orderSubject.getValue();
   
     // Filter out the product by its ID or unique property
-    currentOrder.products = currentOrder.products.filter(prd => prd.product.id !== product.product.id);
+    currentOrder.products = currentOrder.products.filter(prd => prd.product.ref !== product.product.ref);
   
     // Recalculate the total amount after removal
     currentOrder.totalAmount = this.calculateTotalAmount(currentOrder.products);
@@ -86,8 +88,13 @@ export class BasketComponent implements OnInit, OnDestroy {
   }
 
 
+  onCloseBasket() {
+    this.closeDrawer.emit();
+  }
+
 
   // Clean up the subscription when the component is destroyed
+
   ngOnDestroy(): void {
     if (this.orderSubscription) {
       this.orderSubscription.unsubscribe();

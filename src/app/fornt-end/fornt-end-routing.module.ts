@@ -4,17 +4,16 @@ import { CategoriesSectionComponent } from './categories-section/categories-sect
 import { ShowProductComponent } from './show-product/show-product.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { KioskComponent } from './kiosk/kiosk.component';
+import {IndexComponent} from "./index/index.component";
 
 const routes: Routes = [
-  {
-    path: '',
-    children: [
-      { path: '', component: HomePageComponent },
-      { path: 'categories', component: CategoriesSectionComponent },
-      { path: 'product', component: ShowProductComponent },
-      { path: 'kiosk', component: KioskComponent },
-    ]
-  }
+  {      path: '', component: IndexComponent,
+        children: [
+          { path: '', component: HomePageComponent },
+          { path: 'categories', component: CategoriesSectionComponent },
+          { path: 'product/show', component: ShowProductComponent },
+          { path: 'kiosk', component: KioskComponent },
+        ]},
 ];
 
 

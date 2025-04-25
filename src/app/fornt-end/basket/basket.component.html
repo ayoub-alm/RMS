@@ -1,12 +1,30 @@
-<div class="offcanvas vh-100  offcanvas-end rounded overflow-x-hidden" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header border bg-dark-smart rounded-0  rounded">
-    <p class="offcanvas-title text-white fw-bold" id="offcanvasExampleLabel"><strong>Total</strong>: {{ totalAmount  }} MAD</p>
-    
-    <button style="color: white !important;" type="button" class="bg-white btn-close btn btn-secondary" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
+<div class="vh-100   rounded overflow-x-hidden" >
+    <mat-toolbar class="mat-elevation-z0 border border-1 mb-2" color="transparent" style="max-height: 10vh;" >
+        <div class="container-fluid d-flex align-items-center justify-content-between w-100">
 
-    <div class="overflow-auto" style="max-height: 70vh;scrollbar-color: red;">
+            <!-- Left side: Logo + Nav links -->
+            <div class="d-flex align-items-center gap-4">
+                <div class="d-flex">
+                    <button mat-icon-button class="mx-0 rounded-1"><mat-icon>menu</mat-icon></button>
+                    <a class="navbar-brand d-flex align-items-center" href="#" style="color: #d7a734;">
+                        <span class="fw-bold">Le repère</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right side: Basket + Login -->
+            <div class="d-flex align-items-center gap-3">
+                <button (click)="onCloseBasket()" mat-icon-button aria-label="Basket" class="position-relative rounded-1">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+
+        </div>
+    </mat-toolbar>
+
+
+
+    <div class="overflow-auto" style="max-height: 78vh;">
       <ul class="list-group" *ngFor="let product of products | async">
         <div class="card mb-2">
           <div class="row g-0">
@@ -56,6 +74,5 @@
         </li>
       </ul>
     <!-- </div> -->
-  </div>
 
 </div>
