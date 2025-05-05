@@ -31,7 +31,7 @@ export class OrderService {
   addProductToOrder(product: ProductInOrderDto): void {
     const currentOrder = this.orderSubject.getValue();
     const prd = currentOrder.products.find(prds => product.product.name === prds.product.name)
-    if(prd && prd != undefined){
+    if(prd){
       prd.quantity ++
     }  else{
       currentOrder.products.push(product);
@@ -59,5 +59,10 @@ export class OrderService {
 
   private saveOrderToLocalStorage(order: OrderDto): void {
     this.localStorageService.setItem('order', JSON.stringify(order));
+  }
+
+  resetOrder(): void {
+    const reset = new OrderDto(0, OrderType.ONLINE, OrderState.PENDING, 1, new Date(), [], 0);
+    this.updateOrder(reset);
   }
 }

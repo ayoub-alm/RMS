@@ -71,7 +71,9 @@ addToBasket(product: ProductModel): void {
 }
 
 getProductsByCategory(arg0: string) {
-  throw new Error('Method not implemented.');
+   this.productService.getProductsByCategoryRef(arg0).subscribe(products => {
+     this.allProduct.next(products);
+   })
   }
 
 ngOnDestroy(): void {

@@ -3,12 +3,13 @@ import {ProductModel} from "../models/product.model";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, map} from "rxjs";
 import {ProductCreateDto} from "../Dtos/product.create.dto";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn : 'root'
 })
 export class ProductsServices {
-
+  private readonly baseUrl=  environment.apiBaseUrl;
   constructor(private http: HttpClient) {
   }
 
@@ -19,7 +20,7 @@ export class ProductsServices {
    * @returns ProductModel
    */
   public getProduct(id: number): Observable<ProductModel> {
-    return this.http.get<ProductModel>(`http://localhost:8080/products/${id}`).pipe(
+    return this.http.get<ProductModel>(`${this.baseUrl}/products/${id}`).pipe(
       map(product =>
         new ProductModel(product.id,
           product.name,
@@ -30,7 +31,8 @@ export class ProductsServices {
           product.seller,
           product.state,
           product.ref,
-          product.categoryId
+          product.categoryId,
+          product.ingredients
         ))
     );
   }
@@ -38,11 +40,11 @@ export class ProductsServices {
 
   /**
    * This function allows us to get a product by reference
-   * @param id This reference of products
+   * @param productRef This reference of products
    * @returns ProductModel
    */
-  public getProductByRef(productRef: String): Observable<ProductModel> {
-    return this.http.get<ProductModel>(`http://localhost:8080/products/ref/${productRef}`).pipe(
+  public getProductByRef(productRef: string): Observable<ProductModel> {
+    return this.http.get<ProductModel>(`${this.baseUrl}/products/ref/${productRef}`).pipe(
       map(product =>
         new ProductModel(product.id,
           product.name,
@@ -53,7 +55,8 @@ export class ProductsServices {
           product.seller,
           product.state,
           product.ref,
-          product.categoryId
+          product.categoryId,
+          product.ingredients
         ))
     );
   }
@@ -63,7 +66,7 @@ export class ProductsServices {
    * @returns List of products
    */
   public getProducts(): Observable<ProductModel[]> {
-    return this.http.get<ProductModel[]>(`http://localhost:8080/products`).pipe(
+    return this.http.get<ProductModel[]>(`${this.baseUrl}/products`).pipe(
       map(products => products.map(product => new ProductModel(
         product.id,
         product.name,
@@ -74,7 +77,8 @@ export class ProductsServices {
         product.seller,
         product.state,
         product.ref,
-        product.categoryId
+        product.categoryId,
+        product.ingredients
       )))
     );
   }
@@ -105,7 +109,7 @@ export class ProductsServices {
     let headers = new HttpHeaders();
 
     headers = headers.append('Accept', 'application/json');
-    return this.http.post<ProductCreateDto>(`http://localhost:8080/products`, product, {headers: headers}).pipe(
+    return this.http.post<ProductCreateDto>(`${this.baseUrl}/products`, product, {headers: headers}).pipe(
       map(product => new ProductCreateDto(
         product.name,
         product.img,
@@ -125,7 +129,7 @@ export class ProductsServices {
    * @returns
    */
   public deleteProduct(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(`http://localhost:8080/products/${id}`, {observe: 'response'})
+    return this.http.delete<boolean>(`${this.baseUrl}/products/${id}`, {observe: 'response'})
       .pipe(
         map(response => response.ok) // Extracting the boolean value based on response state
       );
@@ -137,7 +141,7 @@ export class ProductsServices {
    * @returns List of products
    */
   public getProductsByCategoryRef(category_ref: string): Observable<ProductModel[]> {
-    return this.http.get<ProductModel[]>(`http://localhost:8080/products/category/${category_ref}`).pipe(
+    return this.http.get<ProductModel[]>(`${this.baseUrl}/products/category/${category_ref}`).pipe(
       map(products => products.map(product => new ProductModel(
         product.id,
         product.name,
@@ -148,8 +152,33 @@ export class ProductsServices {
         product.seller,
         product.state,
         product.ref,
-        product.categoryId
+        product.categoryId,
+          product.ingredients
       )))
+    );
+  }
+
+
+ /**
+  * This function allows us to get a list of products by category id
+  * @param categoryId the category ID
+  * @returns List of products
+  */
+  public getProductsByCategoryId(categoryId: number): Observable<ProductModel[]> {
+    return this.http.get<ProductModel[]>(`${this.baseUrl}/products/category/id/${categoryId}`).pipe(
+        map(products => products.map(product => new ProductModel(
+            product.id,
+            product.name,
+            product.img,
+            product.price,
+            product.description,
+            product.sku,
+            product.seller,
+            product.state,
+            product.ref,
+            product.categoryId,
+            product.ingredients
+        )))
     );
   }
 
@@ -159,7 +188,7 @@ export class ProductsServices {
    *
    */
   public getProductsBySellerId(sellerId: number): Observable<ProductModel[]> {
-    return this.http.get<ProductModel[]>(`http://localhost:8080/products/seller/${sellerId}`).pipe(
+    return this.http.get<ProductModel[]>(`${this.baseUrl}/products/seller/${sellerId}`).pipe(
       map(products => products.map(product => new ProductModel(
         product.id,
         product.name,
@@ -170,7 +199,8 @@ export class ProductsServices {
         product.seller,
         product.state,
         product.ref,
-        product.categoryId
+        product.categoryId,
+          product.ingredients
       )))
     );
   }

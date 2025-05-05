@@ -1,4 +1,5 @@
 import {SellerModel} from "./seller.model";
+import {IngredientModel} from "./ingredient.model";
 
 class float {
 }
@@ -15,7 +16,8 @@ export class ProductModel {
               public seller: SellerModel,
               public state:boolean,
               public ref: string,
-              public categoryId: number
+              public categoryId: number,
+              public ingredients: IngredientModel[]
               ) {
   }
 

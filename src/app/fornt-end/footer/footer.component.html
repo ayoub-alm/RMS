@@ -24,48 +24,49 @@
     <!-- <div class="swiper-scrollbar"></div> -->
   </div>
  </div>
- <footer class="container-fluid text-center p-5 card-body  dark-bg shadow-lg " style="border-radius: 25px 25px 0px 0px ;">
-  <div class="row">
-    <div class="col-lg-3 col-sm-12">
-      <img src="../../../assets/mamito_logo-png.png" width="200px" class="img-fluid" alt="">
-      <br>
-      <small class="d-block  text-white">© 2023–2024</small>
+ <!-- src/app/components/shared/footer/footer.component.html -->
+ <footer class="bg-dark text-light pt-5 pb-4 mt-5">
+     <div class="container text-center text-md-start">
+         <div class="row">
 
-    </div>
-    <div class="col-lg-3 col-sm-6">
-      <h5  class="text-start " style="color: #d7a734;">Smart menu </h5>
-      <ul class="list-unstyled text-small text-start">
-        <li><a class="link-secondary text-white text-strat" href="#">Cool stuff</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Random feature</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Team feature</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Stuff for developers</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Another one</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Last time</a></li>
-      </ul>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-      <h5 class="text-start " style="color: #d7a734;">Resources</h5>
-      <ul class="list-unstyled text-small text-start">
-        <li><a class="link-secondary text-white text-strat" href="#">Resource name</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Resource</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Another resource</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Final resource</a></li>
-      </ul>
-    </div>
-    <div class="col-lg-3 col-sm-6   ">
-      <h5 class="text-start " style="color: #d7a734;">About</h5>
-      <ul class="list-unstyled text-small text-start">
-        <li><a class="link-secondary text-white text-strat" href="#">Team</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Locations</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Privacy</a></li>
-        <li><a class="link-secondary text-white text-strat" href="#">Terms</a></li>
-      </ul>
-    </div>
-    <div class="col-12 text-center">
-      <small class="d-block mb-3 text-white">
-        Created by :
-        <a href="https://www.linkedin.com/in/ayoub-lemrachchaq-b25014143"> Ayoub Lemrachchaq</a>
-      </small>
-    </div>
-  </div>
-</footer>
+             <!-- Brand -->
+             <div class="col-md-3 mb-4">
+                 <h5 class="fw-bold text-white">🍕 PizzaBella</h5>
+                 <p>Votre restaurant italien préféré au cœur de Casablanca.</p>
+             </div>
+
+             <!-- Links -->
+             <div class="col-md-3 mb-4">
+                 <h6 class="fw-bold text-white">Navigation</h6>
+                 <ul class="list-unstyled">
+                     <li><a href="/" class="text-light text-decoration-none">Accueil</a></li>
+                     <li><a href="/menu" class="text-light text-decoration-none">Menu</a></li>
+                     <li><a href="/about" class="text-light text-decoration-none">À propos</a></li>
+                     <li><a href="/contact" class="text-light text-decoration-none">Contact</a></li>
+                 </ul>
+             </div>
+
+             <!-- Contact -->
+             <div class="col-md-3 mb-4">
+                 <h6 class="fw-bold text-white">Contact</h6>
+                 <p><i class="bi bi-geo-alt"></i> 3 Rue Chakaik, Berrechid</p>
+                 <p><i class="bi bi-envelope"></i> {{ 'contact@pizzabella.com' }}</p>
+                 <p><i class="bi bi-phone"></i> +212 600 123 456</p>
+             </div>
+
+             <!-- Social -->
+             <div class="col-md-3 mb-4 text-center text-md-start">
+                 <h6 class="fw-bold text-white">Suivez-nous</h6>
+                 <a href="#" class="text-light fs-5 me-2"><i class="bi bi-facebook"></i></a>
+                 <a href="#" class="text-light fs-5 me-2"><i class="bi bi-instagram"></i></a>
+                 <a href="#" class="text-light fs-5 me-2"><i class="bi bi-tiktok"></i></a>
+                 <a href="#" class="text-light fs-5"><i class="bi bi-youtube"></i></a>
+             </div>
+
+         </div>
+         <hr class="bg-light" />
+         <div class="text-center">
+             <p class="mb-0">© 2025 PizzaBella | Fait avec ❤️ à Casablanca</p>
+         </div>
+     </div>
+ </footer>

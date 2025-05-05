@@ -43,10 +43,10 @@ export class IndexComponent implements OnInit{
         })
 
         AOS.init({
-            duration: 1400, // Animation duration (optional)
+            // duration: 1400, // Animation duration (optional)
             easing: 'fade', // Animation easing (optional)
             // once: true, // Run animation only once (optional)
-            mirror: false, // Trigger animation when scrolling back (optional)
+            mirror: true, // Trigger animation when scrolling back (optional)
             offset: -100, // Set the trigger offset (optional)
         });
     }

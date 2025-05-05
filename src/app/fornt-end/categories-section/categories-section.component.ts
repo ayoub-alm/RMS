@@ -83,8 +83,6 @@ export class CategoriesSectionComponent implements OnInit , OnDestroy{
       product: product,
       quantity: 1 // default quantity can be set here, or you can make it dynamic
     };
-
-
     // Add the product to the order
     this.orderService.addProductToOrder(productInOrder);
     // Log the updated order by subscribing to the observable

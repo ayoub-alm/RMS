@@ -7,6 +7,7 @@ import { ProductModel } from '../../models/product.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
+import {OrderDto} from "../../Dtos/OrderDto";
 
 @Component({
   selector: 'app-basket',
@@ -101,4 +102,7 @@ export class BasketComponent implements OnInit, OnDestroy {
     }
   }
 
+  restOrder() {
+    this.orderService.resetOrder()
+  }
 }
