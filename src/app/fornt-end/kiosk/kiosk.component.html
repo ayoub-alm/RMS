@@ -1,33 +1,10 @@
-<section class="container-fluid bg-beige" >
-<!--    <mat-toolbar class="" style="background: #8e8e8e">-->
-<!--        <button aria-label="Example icon-button with menu icon" class="example-icon text-white" mat-icon-button>-->
-<!--            <mat-icon>menu</mat-icon>-->
-<!--        </button>-->
-<!--        <span class="text-white">Smart Menu</span>-->
-<!--        <span class="example-spacer"></span>-->
-<!--        <button aria-label="Example icon-button with heart icon" class="example-icon text-white favorite-icon"-->
-<!--                mat-icon-button>-->
-<!--            <mat-icon>logout</mat-icon>-->
-<!--        </button>-->
-<!--        <button aria-label="Example icon-button with share icon" class="example-icon text-white " mat-icon-button>-->
-<!--            <mat-icon class="profile-icon">account_circle</mat-icon>-->
-<!--        </button>-->
-<!--&lt;!&ndash;        <button aria-label="Example icon-button with share icon" class="example-icon text-white " mat-icon-button>&ndash;&gt;-->
-<!--&lt;!&ndash;            <mat-icon>shopping_cart</mat-icon>&ndash;&gt;-->
-<!--&lt;!&ndash;        </button>&ndash;&gt;-->
-<!--        <button mat-button type="button" class="btn bg-light fs-6 mx-3 text-dark" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" >-->
-<!--            <mat-icon >shopping_cart</mat-icon>-->
-<!--&lt;!&ndash;            <small class="position-absolute bottom-1 start-75 translate-middle  bg-dark badge rounded-pill" >&ndash;&gt;-->
-<!--             <span *ngIf="productsInBasketCount.getValue() > 0"> {{productsInBasketCount.getValue()}} </span>-->
-<!--&lt;!&ndash;            </small>&ndash;&gt;-->
-<!--        </button>-->
-<!--    </mat-toolbar>-->
+<section class="container-fluid bg-dark-smart" >
     <div class="container-fluid">
         <div class="row">
 
-            <div class="card-container col-lg-3  d-flex align-items-center  flex-lg-column vh-100 b"
+            <div class="card-container col-lg-2  d-flex align-items-center  flex-lg-column vh-100 b"
                  >
-                <h6 class="sticky-top w-100 rounded-2  fs-4 mat-elevation-z6 text-center my-2 p-3 bg-white ">
+                <h6 class="sticky-top w-100 rounded-2 bg-dark fs-4  text-center my-2 p-3        ">
                     Catégories
                 </h6>
                 <div *ngFor="let category of categories | async"
@@ -35,41 +12,31 @@
                     <div (click)="getProductsByCategory(category.ref)"
                          class=" rounded-4 text-center  d-flex justify-content-around flex-lg-column">
                         <div class="mx-3">
-                            <div class=" fw-bold mt-2 ">{{ category.name }}</div>
+                            <div class=" fw-bold mt-2 text-dark">{{ category.name }}</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-9 p-lg-3 rounded-4 mat-elevation-z50"
+            <div class="col-lg-10 p-lg-3 rounded-4 mat-elevation-z50"
                  style="overflow:auto ;max-height: 100vh;background:#F8F9FA;scrollbar-width: thin;scrollbar-color: transparent transparent;">
                 <div class="row">
-                    <div *ngFor="let product of allProduct | async" class="col-lg-3 col-6  p-lg-2 ">
-                        <mat-card class="p-3 card bg-white shadow-sm ">
-                            <span class="badge  bg-dark col-6">{{ product.seller.sellerName }}</span>
-                            <a class="p-2 text-center" href="/product#top">
-                                <img (click)="showProductDialog(product.ref)" alt="Photo of a Shiba Inu"
-                                     class="card-img-top w-75 img-fluid" src="/foodIcon.png">
+                    <div *ngFor="let product of allProduct | async" class="col-lg-2 col-6  p-lg-2 ">
+                        <mat-card class="h-100  card product-card bg-white mat-elevation-z5 mat-ripple-unbounded">
+                            <a [routerLink]="'/product/show/'+product.ref" class="p-3">
+                                <img class="card-img-top"
+                                     src="https://modpizza.com/wp-content/uploads/2021/12/Website-Pizzas-MadDog-TEST.png" alt="{{product.name}}">
                             </a>
-                            <p class="h6 mt-3 fw-blod text-center"><strong>{{ product.name }}</strong></p>
-                            <div class="d-flex flex-column align-items-center">
-                                <!-- Display the product price -->
-                                <button class="price-button" disabled mat-button>
-                                    {{ product.price }} MAD
-                                </button>
-
-                                <!-- Add to cart button -->
-                                <button
-                                        (click)="addToBasket(product)"
-                                        aria-label="Add to cart"
-                                        class="add-to-cart-btn mt-2 text-dark"
-                                        color="primary"
-                                        mat-raised-button>
-                                    <mat-icon class="mr-2">shopping_cart</mat-icon>
-                                    Add to Cart
-                                </button>
+                            <div class="card-body">
+                                <!--                    <span class="badge bg-crust-brown mb-2">{{ item.seller?.sellerName }}</span>-->
+                                <h6 class="fw-bold text-dark text-truncate">{{ product.name }}</h6>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">{{ product.price }} MAD</span>
+                                    <button mat-icon-button (click)="addToBasket(product)">
+                                        <mat-icon class="text-circle-green">shopping_cart</mat-icon>
+                                    </button>
+                                </div>
                             </div>
-
                         </mat-card>
                     </div>
                 </div>

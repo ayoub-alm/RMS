@@ -14,12 +14,13 @@ import {MatChipAvatar} from "@angular/material/chips";
 import {MatToolbar} from "@angular/material/toolbar";
 import {BasketComponent} from "../basket/basket.component";
 import {ProductInOrderDto} from "../../Dtos/product-in-order.dto";
+import {RouterLink} from "@angular/router";
 
 
 @Component({
   selector: 'app-kiosk',
   standalone:true,
-  imports: [MatIconModule, MatCard, MatCardActions, CommonModule, MatCardModule, MatButtonModule, MatChipAvatar, MatToolbar, BasketComponent],
+    imports: [MatIconModule, MatCard, MatCardActions, CommonModule, MatCardModule, MatButtonModule, MatChipAvatar, MatToolbar, BasketComponent, RouterLink],
   providers:[OrderService,ProductCategoryService,ProductsServices],
   templateUrl: './kiosk.component.html',
   styleUrls: ['./kiosk.component.css']

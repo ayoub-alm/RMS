@@ -2,7 +2,7 @@
     <div class="row" *ngIf="product$ | async as product">
         <!-- Product image -->
         <div class="col-lg-6 d-flex justify-content-center align-items-center mb-4">
-            <img src="https://modpizza.com/wp-content/uploads/2021/12/Website-Pizzas-MadDog-TEST.png"
+            <img src="/tacos.webp"
                  [alt]="product.name" class="img-fluid  rounded" style="max-height: 400px;">
         </div>
 
@@ -46,9 +46,9 @@
         <div class="d-flex flex-nowrap overflow-auto pb-2 row-cols-6">
             <div *ngFor="let item of products | async" class="me-3 col" style="min-width: 240px;">
                 <mat-card class="h-100 shadow-sm card product-card bg-white mat-elevation-z5">
-                    <a [routerLink]="'product/show/'+item.ref">
+                    <a [routerLink]="'/product/show/'+item.ref">
                         <img class="card-img-top"
-                             src="https://modpizza.com/wp-content/uploads/2021/12/Website-Pizzas-MadDog-TEST.png" alt="{{item.name}}">
+                             src="/tacos.webp" alt="{{item.name}}">
                     </a>
                     <div class="card-body">
                         <span class="badge bg-crust-brown mb-2">{{ item.seller?.sellerName }}</span>

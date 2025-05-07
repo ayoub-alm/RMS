@@ -1,6 +1,6 @@
 <mat-drawer-container class="example-container">
   <!-- Side Navigation Menu -->
-  <mat-drawer #drawer class="example-sidenav custom-drawer-width bg-secondary-subtle" mode="side" opened>
+  <mat-drawer #drawer class="example-sidenav custom-drawer-width bg-dark-smart" mode="side" opened>
     <div class="container-fluid side-nav">
       <!-- Logo -->
         <button mat-icon-button (click)="drawer.toggle()" class="example-icon text-white" aria-label="Toggle sidenav">
@@ -23,7 +23,7 @@
         <mat-divider></mat-divider>
 
         <!-- Commandes -->
-        <a [routerLink]="'/admin/commandes'" mat-list-item class="d-flex align-items-start">
+        <a [routerLink]="'/admin/orders'" mat-list-item class="d-flex align-items-start">
           <button mat-button class="text-start text-secondary">
             <mat-icon class="me-2">shopping_cart</mat-icon>
             Commandes
@@ -38,15 +38,6 @@
             Livraisons
           </button>
         </a>
-        <mat-divider></mat-divider>
-
-          <!-- Livraisons -->
-          <a [routerLink]="'/admin/livraisons'" mat-list-item class="d-flex align-items-center">
-            <button mat-button class="text-start text-secondary">
-              <mat-icon class="me-2">local_shipping</mat-icon>
-              Livraisons Externe
-            </button>
-          </a>
           <mat-divider></mat-divider>
         <!-- Produits -->
         <a [routerLink]="'/admin/products'" mat-list-item class="d-flex align-items-center">
@@ -72,11 +63,11 @@
   <!-- Main Content Area -->
   <div class="example-sidenav-content">
     <!-- Top Toolbar -->
-    <mat-toolbar class="sticky-top " style="background: #8e8e8e">
+    <mat-toolbar class="sticky-top bg-dark-smart">
       <button mat-icon-button (click)="drawer.toggle()" class="example-icon text-white" aria-label="Toggle sidenav">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Smart Menu</span>
+      <span>Mamito Food</span>
       <span class="example-spacer"></span>
 
       <!-- Action Icons -->

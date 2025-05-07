@@ -46,9 +46,15 @@ export class ShowProductComponent implements OnInit {
   ngOnInit(): void {
     this.orderFormGroup = this.fb.group({
       quantity: [1, Validators.required]
-    });
+    })
 
-    const ref = this.route.snapshot.paramMap.get('ref');
+    this.route.params.subscribe(params => {
+      const ref = params['ref'];
+      this.loadProduct(ref); // call a method to fetch new data based on ref
+    });
+  }
+
+  loadProduct(ref:string) {
     if (ref) {
       this.productService.getProductByRef(ref).subscribe(product => {
         this.product$.next(product);

@@ -1,10 +1,10 @@
 <mat-drawer-container class="example-container">
-    <mat-drawer #drawer mode="side" position="end" class="vh-100 w-sm-100 w-md-25 w-lg-25  position-fixed rounded-1 bg-secondary-subtle menu-drawer">
+    <mat-drawer #drawer mode="side" position="end" class="vh-100 w-sm-100 w-md-25 w-lg-25  position-fixed rounded-0 bg-secondary-subtle menu-drawer">
         <app-basket  (closeDrawer)="drawer.close()"></app-basket>
     </mat-drawer>
 
     <mat-drawer-content class="bg-white">
-        <mat-toolbar class="mat-elevation-z0  bg-beige shadow-sm border-bottom border-secondary-subtle" >
+        <mat-toolbar class="mat-elevation-z3 rounded-0  bg-dark shadow-sm border-bottom border-secondary-subtle" >
             <div class="container-fluid d-flex align-items-center justify-content-between w-100">
 
                 <!-- Left side: Logo + Nav links -->
@@ -12,18 +12,19 @@
                     <div class="d-flex">
 <!--                        <button mat-icon-button class="mx-0 rounded-1"><mat-icon>menu</mat-icon></button>-->
                         <a class="navbar-brand d-flex align-items-center" (click)="router.navigateByUrl('/')" style="color: #d7a734;">
-                            <span class="fw-bold text-crust-brown" ><img src="/logo.webp" class="img-fluid" width="50px"></span>
+                            <span class="fw-bold text-crust-brown" ><img src="/mamito_logo-png.png" class="img-fluid" width="70px"></span>
                         </a>
                     </div>
-                        <a href="#" class="d-none d-md-block nav-link small text-secondary fs-6">Categories</a>
+                        <a routerLink="/" class="d-none d-md-block nav-link small text-secondary fs-6">Categories</a>
                     <!-- Visible on lg and up only -->
-                    <a href="#" class="d-none d-lg-block nav-link small text-secondary fs-6">Top sell's</a>
+                    <a routerLink="/" class="d-none d-lg-block nav-link small text-secondary fs-6">Top sell's</a>
+                    <a routerLink="/kiosk" class="d-none d-lg-block nav-link small text-secondary fs-6">Menu</a>
                 </div>
 
                 <!-- Right side: Basket + Login -->
                 <div class="d-flex align-items-center gap-3">
                     <button mat-icon-button aria-label="Basket" class="position-relative rounded-1" (click)="drawer.toggle()">
-                        <mat-icon class="text-dark">shopping_cart</mat-icon>
+                        <mat-icon class="text-white">shopping_cart</mat-icon>
                         <span class="position-absolute top-10 start-100 translate-middle badge rounded-pill bg-pizza-red" style=";transform: scale(0.9); font-size: 0.9rem;">
                           {{ productsInBasketCount.getValue() }}
                         </span>

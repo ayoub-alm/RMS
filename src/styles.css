@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --pizza-red: #dc2626;        /* Text "PIZZA", outer ring */
-    --cheese-yellow: #f9c85b;    /* Cheese color */
+    --cheese-yellow: #dca532;    /* Cheese color */
     --pepperoni-red: #b93a2f;    /* Pepperoni circles */
     --crust-brown: #d8862c;      /* Pizza crust */
     --leaf-green: #387e4b;       /* Basil leaves */
@@ -106,12 +106,25 @@ html {
 .bg-beige    { background-color: var(--background-beige)!important; }
 .text-beige  { color: var(--background-beige)!important; }
 
-
-
-.bg-dark-smart{
-    background-color:  #8e8e8e!important;
+/* Solid dark background */
+.bg-dark-smart {
+    background-color: #373636 !important;
+    color: #ffffff; /* Optional for better contrast */
 }
 
-.bg-dark-light-smart{
-    background: #F8F9FA!important;
+/* Translucent dark background with blur effect */
+.bg-dark-light-smart {
+    background: rgba(62, 61, 61, 0.33);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(62, 61, 61, 0.3);
 }
+.scale-08{
+    transform: scale(0.8);
+}
+.scale-0{
+    transform: scale(0.9);
+}
+

@@ -105,4 +105,11 @@ export class BasketComponent implements OnInit, OnDestroy {
   restOrder() {
     this.orderService.resetOrder()
   }
+
+
+  trackByProduct(index: number, item: any) {
+    return item.product.id || index; // Replace with unique product ID if available
+  }
+
+  protected readonly parseInt = parseInt;
 }

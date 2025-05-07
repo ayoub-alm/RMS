@@ -8,7 +8,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatIconButton} from "@angular/material/button";
 import {MatToolbar} from "@angular/material/toolbar";
 import {PartneresComponent} from "../partneres/partneres.component";
-import {Router, RouterOutlet} from "@angular/router";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {BehaviorSubject} from "rxjs";
 import {OrderService} from "../../services/OrderService";
 import AOS from "aos";
@@ -18,17 +18,14 @@ import AOS from "aos";
   standalone: true,
     imports: [
         BasketComponent,
-        CategoriesSectionComponent,
-        ContactUsComponent,
-        HeaderSectionComponent,
         MatDrawer,
         MatDrawerContainer,
         MatDrawerContent,
         MatIcon,
         MatIconButton,
         MatToolbar,
-        PartneresComponent,
-        RouterOutlet
+        RouterOutlet,
+        RouterLink
     ],
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
